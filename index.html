@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI JEE Tutor</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:24px 7%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:800}.tag{opacity:.9}
+.container{max-width:1200px;margin:28px auto;padding:0 20px}
+.hero{background:white;border-radius:22px;padding:30px;box-shadow:0 8px 30px #1d254010;margin-bottom:24px}
+.hero h1{margin:0 0 8px;font-size:34px}.hero p{color:#667085}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:white;border-radius:18px;padding:22px;box-shadow:0 5px 20px #1d25400d;border:1px solid #e9eaf2}
+.card h3{margin:10px 0 8px}.icon{font-size:30px}
+button{border:0;border-radius:12px;padding:11px 16px;background:#4f46e5;color:white;font-weight:700;cursor:pointer}
+button:hover{background:#4338ca}.secondary{background:#eef0ff;color:#4338ca}
+.progress{height:10px;background:#e9ecf5;border-radius:10px;overflow:hidden;margin:12px 0}.bar{height:100%;width:62%;background:#4f46e5}
+.tasks{margin-top:24px}.task{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #eee}
+.task input{width:18px;height:18px}.subject{font-weight:700}
+.chat{margin-top:24px}.messages{height:220px;overflow:auto;background:#f8f9fd;border-radius:14px;padding:15px}
+.msg{padding:10px 13px;border-radius:12px;margin:7px 0;max-width:80%}.ai{background:#e9e7ff}.user{background:#dff7e8;margin-left:auto}
+.inputrow{display:flex;gap:10px;margin-top:10px}.inputrow input{flex:1;padding:13px;border:1px solid #ddd;border-radius:12px;font-size:15px}
+footer{text-align:center;padding:30px;color:#7a8191}
+@media(max-width:600px){.hero h1{font-size:27px}header{padding:20px}.tag{display:none}}
+</style>
+</head>
+<body>
+<header><div class="logo">🤖 AI JEE Tutor</div><div class="tag">Study smarter. Every day.</div></header>
+<div class="container">
+<section class="hero">
+<h1>Good evening, Aryan 👋</h1>
+<p>Your Class 11 → JEE 2028 preparation dashboard.</p>
+<div class="progress"><div class="bar"></div></div>
+<strong>Overall progress: 62%</strong>
+</section>
+
+<section class="grid">
+<div class="card"><div class="icon">📚</div><h3>Study Planner</h3><p>Create a realistic daily JEE routine.</p><button onclick="alert('Planner coming next: Physics, Chemistry and Maths slots.')">Open Planner</button></div>
+<div class="card"><div class="icon">🧠</div><h3>AI Doubt Solver</h3><p>Ask questions and get step-by-step explanations.</p><button onclick="document.getElementById('chatInput').focus()">Ask Doubt</button></div>
+<div class="card"><div class="icon">📝</div><h3>Notes</h3><p>Keep chapter notes and quick revision points.</p><button class="secondary" onclick="alert('Notes module ready for the next version.')">My Notes</button></div>
+<div class="card"><div class="icon">🎯</div><h3>JEE Practice</h3><p>Practice chapter-wise questions and track accuracy.</p><button onclick="alert('Question bank module coming next.')">Practice</button></div>
+</section>
+
+<section class="card tasks">
+<h2>Today's Study Plan</h2>
+<div class="task"><input type="checkbox"><span><span class="subject">Physics</span> — Kinematics numericals · 45 min</span></div>
+<div class="task"><input type="checkbox"><span><span class="subject">Chemistry</span> — Periodicity revision · 35 min</span></div>
+<div class="task"><input type="checkbox"><span><span class="subject">Maths</span> — Quadratic equations · 45 min</span></div>
+<div class="task"><input type="checkbox"><span><span class="subject">Revision</span> — 15 mixed PYQs · 30 min</span></div>
+</section>
+
+<section class="card chat">
+<h2>🤖 AI Tutor</h2>
+<div class="messages" id="messages">
+<div class="msg ai">Hi Aryan! Ask me a JEE doubt. Example: “Explain formal charge in simple language.”</div>
+</div>
+<div class="inputrow">
+<input id="chatInput" placeholder="Type your JEE doubt..." onkeydown="if(event.key==='Enter')send()">
+<button onclick="send()">Send</button>
+</div>
+</section>
+</div>
+<footer>AI JEE Tutor · Prototype for JEE 2028 preparation</footer>
+<script>
+function send(){
+ const i=document.getElementById('chatInput'), text=i.value.trim(); if(!text)return;
+ const box=document.getElementById('messages');
+ box.innerHTML += '<div class="msg user">'+escapeHtml(text)+'</div>';
+ box.innerHTML += '<div class="msg ai">I’m the prototype tutor right now. The next step is connecting this chat to the OpenAI API so I can answer your actual JEE questions.</div>';
+ i.value=''; box.scrollTop=box.scrollHeight;
+}
+function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+</script>
+</body>
+</html>
