@@ -4,74 +4,429 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI JEE Tutor</title>
+
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#f5f7fb;color:#172033}
-header{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:white;padding:24px 7%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:24px;font-weight:800}.tag{opacity:.9}
-.container{max-width:1200px;margin:28px auto;padding:0 20px}
-.hero{background:white;border-radius:22px;padding:30px;box-shadow:0 8px 30px #1d254010;margin-bottom:24px}
-.hero h1{margin:0 0 8px;font-size:34px}.hero p{color:#667085}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
-.card{background:white;border-radius:18px;padding:22px;box-shadow:0 5px 20px #1d25400d;border:1px solid #e9eaf2}
-.card h3{margin:10px 0 8px}.icon{font-size:30px}
-button{border:0;border-radius:12px;padding:11px 16px;background:#4f46e5;color:white;font-weight:700;cursor:pointer}
-button:hover{background:#4338ca}.secondary{background:#eef0ff;color:#4338ca}
-.progress{height:10px;background:#e9ecf5;border-radius:10px;overflow:hidden;margin:12px 0}.bar{height:100%;width:62%;background:#4f46e5}
-.tasks{margin-top:24px}.task{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #eee}
-.task input{width:18px;height:18px}.subject{font-weight:700}
-.chat{margin-top:24px}.messages{height:220px;overflow:auto;background:#f8f9fd;border-radius:14px;padding:15px}
-.msg{padding:10px 13px;border-radius:12px;margin:7px 0;max-width:80%}.ai{background:#e9e7ff}.user{background:#dff7e8;margin-left:auto}
-.inputrow{display:flex;gap:10px;margin-top:10px}.inputrow input{flex:1;padding:13px;border:1px solid #ddd;border-radius:12px;font-size:15px}
-footer{text-align:center;padding:30px;color:#7a8191}
-@media(max-width:600px){.hero h1{font-size:27px}header{padding:20px}.tag{display:none}}
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f7fb;
+  color:#172033;
+}
+
+header{
+  background:linear-gradient(135deg,#4f46e5,#7c3aed);
+  color:white;
+  padding:22px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  font-size:28px;
+  font-weight:800;
+}
+
+.tagline{
+  font-size:17px;
+}
+
+.container{
+  max-width:1200px;
+  margin:28px auto;
+  padding:0 20px;
+}
+
+.hero{
+  background:white;
+  border-radius:22px;
+  padding:30px;
+  box-shadow:0 8px 30px #1d254010;
+  margin-bottom:24px;
+}
+
+.hero h1{
+  margin:0 0 8px;
+  font-size:34px;
+}
+
+.hero p{
+  font-size:18px;
+  color:#667085;
+}
+
+.progress{
+  height:10px;
+  background:#e9ecf5;
+  border-radius:10px;
+  overflow:hidden;
+}
+
+.bar{
+  height:100%;
+  width:62%;
+  background:#4f46e5;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:22px;
+  box-shadow:0 5px 20px #1d25400d;
+  border:1px solid #e9eaf2;
+}
+
+.card h2{
+  margin-top:8px;
+}
+
+.icon{
+  font-size:35px;
+}
+
+button{
+  border:0;
+  border-radius:12px;
+  padding:11px 16px;
+  background:#4f46e5;
+  color:white;
+  font-weight:700;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#4338ca;
+}
+
+.section{
+  background:white;
+  margin-top:24px;
+  border-radius:18px;
+  padding:24px;
+  box-shadow:0 5px 20px #1d25400d;
+}
+
+.task{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 0;
+  border-bottom:1px solid #eee;
+}
+
+.task input{
+  width:18px;
+  height:18px;
+}
+
+.chat{
+  height:230px;
+  overflow-y:auto;
+  background:#f8f9fd;
+  border-radius:14px;
+  padding:15px;
+}
+
+.msg{
+  padding:10px 13px;
+  border-radius:12px;
+  margin:7px 0;
+  max-width:80%;
+}
+
+.ai{
+  background:#e9e7ff;
+}
+
+.user{
+  background:#dff7e8;
+  margin-left:auto;
+}
+
+.inputrow{
+  display:flex;
+  gap:10px;
+  margin-top:12px;
+}
+
+.inputrow input{
+  flex:1;
+  padding:13px;
+  border:1px solid #ddd;
+  border-radius:12px;
+  font-size:15px;
+}
+
+.note{
+  padding:15px;
+  background:#f8f9fd;
+  border-radius:12px;
+  margin-top:10px;
+}
+
+@media(max-width:600px){
+  header{
+    padding:18px;
+  }
+
+  .tagline{
+    display:none;
+  }
+
+  .hero h1{
+    font-size:27px;
+  }
+}
 </style>
 </head>
+
 <body>
-<header><div class="logo">🤖 AI JEE Tutor</div><div class="tag">Study smarter. Every day.</div></header>
+
+<header>
+  <div class="logo">🤖 AI JEE Tutor</div>
+  <div class="tagline">Study smarter. Every day.</div>
+</header>
+
 <div class="container">
+
 <section class="hero">
-<h1>Good evening, Aryan 👋</h1>
-<p>Your Class 11 → JEE 2028 preparation dashboard.</p>
-<div class="progress"><div class="bar"></div></div>
-<strong>Overall progress: 62%</strong>
+  <h1>Good evening, Aryan 👋</h1>
+  <p>Your Class 11 → JEE 2028 preparation dashboard.</p>
+
+  <div class="progress">
+    <div class="bar"></div>
+  </div>
+
+  <h3>Overall progress: 62%</h3>
 </section>
 
-<section class="grid">
-<div class="card"><div class="icon">📚</div><h3>Study Planner</h3><p>Create a realistic daily JEE routine.</p><button onclick="alert('Planner coming next: Physics, Chemistry and Maths slots.')">Open Planner</button></div>
-<div class="card"><div class="icon">🧠</div><h3>AI Doubt Solver</h3><p>Ask questions and get step-by-step explanations.</p><button onclick="document.getElementById('chatInput').focus()">Ask Doubt</button></div>
-<div class="card"><div class="icon">📝</div><h3>Notes</h3><p>Keep chapter notes and quick revision points.</p><button class="secondary" onclick="alert('Notes module ready for the next version.')">My Notes</button></div>
-<div class="card"><div class="icon">🎯</div><h3>JEE Practice</h3><p>Practice chapter-wise questions and track accuracy.</p><button onclick="alert('Question bank module coming next.')">Practice</button></div>
-</section>
+<div class="grid">
 
-<section class="card tasks">
-<h2>Today's Study Plan</h2>
-<div class="task"><input type="checkbox"><span><span class="subject">Physics</span> — Kinematics numericals · 45 min</span></div>
-<div class="task"><input type="checkbox"><span><span class="subject">Chemistry</span> — Periodicity revision · 35 min</span></div>
-<div class="task"><input type="checkbox"><span><span class="subject">Maths</span> — Quadratic equations · 45 min</span></div>
-<div class="task"><input type="checkbox"><span><span class="subject">Revision</span> — 15 mixed PYQs · 30 min</span></div>
-</section>
-
-<section class="card chat">
-<h2>🤖 AI Tutor</h2>
-<div class="messages" id="messages">
-<div class="msg ai">Hi Aryan! Ask me a JEE doubt. Example: “Explain formal charge in simple language.”</div>
+<div class="card">
+  <div class="icon">📚</div>
+  <h2>Study Planner</h2>
+  <p>Create a realistic daily JEE routine.</p>
+  <button onclick="showPlanner()">Open Planner</button>
 </div>
+
+<div class="card">
+  <div class="icon">🧠</div>
+  <h2>AI Doubt Solver</h2>
+  <p>Ask questions and get step-by-step explanations.</p>
+  <button onclick="focusChat()">Ask Doubt</button>
+</div>
+
+<div class="card">
+  <div class="icon">📄</div>
+  <h2>Notes</h2>
+  <p>Keep chapter notes and quick revision points.</p>
+  <button onclick="showNotes()">My Notes</button>
+</div>
+
+<div class="card">
+  <div class="icon">🎯</div>
+  <h2>JEE Practice</h2>
+  <p>Practice chapter-wise questions.</p>
+  <button onclick="practice()">Practice</button>
+</div>
+
+</div>
+
+<section class="section" id="planner">
+
+<h2>📅 Today's Study Plan</h2>
+
+<div class="task">
+<input type="checkbox">
+<b>Physics</b> — Kinematics numericals · 45 min
+</div>
+
+<div class="task">
+<input type="checkbox">
+<b>Chemistry</b> — Chemical Bonding revision · 40 min
+</div>
+
+<div class="task">
+<input type="checkbox">
+<b>Maths</b> — Quadratic Equations · 45 min
+</div>
+
+<div class="task">
+<input type="checkbox">
+<b>Revision</b> — Formula revision · 20 min
+</div>
+
+</section>
+
+<section class="section" id="doubts">
+
+<h2>🧠 AI Doubt Solver</h2>
+
+<div class="chat" id="chat">
+  <div class="msg ai">
+    👋 Hi Aryan! Main tumhara AI JEE Tutor hoon.<br>
+    Apna Physics, Chemistry ya Maths doubt type karo.
+  </div>
+</div>
+
 <div class="inputrow">
-<input id="chatInput" placeholder="Type your JEE doubt..." onkeydown="if(event.key==='Enter')send()">
-<button onclick="send()">Send</button>
+<input id="question"
+       placeholder="Example: What is Newton's second law?"
+       onkeydown="if(event.key==='Enter')askQuestion()">
+
+<button onclick="askQuestion()">Ask</button>
 </div>
+
 </section>
+
+<section class="section" id="notes">
+
+<h2>📄 Quick Revision Notes</h2>
+
+<div class="note">
+<b>Physics:</b> Kinematics → Motion, displacement, velocity, acceleration.
 </div>
-<footer>AI JEE Tutor · Prototype for JEE 2028 preparation</footer>
+
+<div class="note">
+<b>Chemistry:</b> Chemical Bonding → Lewis structure, octet rule, formal charge, hybridisation.
+</div>
+
+<div class="note">
+<b>Maths:</b> Quadratic Equations → roots, discriminant and nature of roots.
+</div>
+
+</section>
+
+<section class="section">
+
+<h2>🎯 JEE Practice</h2>
+
+<p>Start with a quick question:</p>
+
+<div class="note">
+<b>Physics:</b> A body starts from rest with constant acceleration.
+Which equation can be used to find its velocity after time t?
+</div>
+
+<br>
+
+<button onclick="practiceAnswer()">Show Answer</button>
+
+<p id="answer"></p>
+
+</section>
+
+</div>
+
 <script>
-function send(){
- const i=document.getElementById('chatInput'), text=i.value.trim(); if(!text)return;
- const box=document.getElementById('messages');
- box.innerHTML += '<div class="msg user">'+escapeHtml(text)+'</div>';
- box.innerHTML += '<div class="msg ai">I’m the prototype tutor right now. The next step is connecting this chat to the OpenAI API so I can answer your actual JEE questions.</div>';
- i.value=''; box.scrollTop=box.scrollHeight;
+
+function focusChat(){
+  document.getElementById("doubts").scrollIntoView({
+    behavior:"smooth"
+  });
+  setTimeout(()=>{
+    document.getElementById("question").focus();
+  },500);
 }
-function escapeHtml(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+
+function showPlanner(){
+  document.getElementById("planner").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function showNotes(){
+  document.getElementById("notes").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function practice(){
+  window.scrollTo({
+    top:document.body.scrollHeight,
+    behavior:"smooth"
+  });
+}
+
+function practiceAnswer(){
+  document.getElementById("answer").innerHTML =
+  "<b>Answer:</b> v = u + at. Since the body starts from rest, u = 0, so v = at.";
+}
+
+function askQuestion(){
+
+  const input=document.getElementById("question");
+  const question=input.value.trim();
+
+  if(!question) return;
+
+  const chat=document.getElementById("chat");
+
+  chat.innerHTML +=
+    '<div class="msg user">'+escapeHTML(question)+'</div>';
+
+  let answer="";
+
+  const q=question.toLowerCase();
+
+  if(q.includes("newton") && q.includes("second")){
+    answer=
+    "<b>Newton's Second Law:</b><br>" +
+    "Force is proportional to the rate of change of momentum. " +
+    "For constant mass, <b>F = ma</b>.";
+  }
+  else if(q.includes("velocity") && q.includes("acceleration")){
+    answer=
+    "<b>Important equation:</b><br>" +
+    "v = u + at<br><br>" +
+    "where u = initial velocity, v = final velocity, " +
+    "a = acceleration and t = time.";
+  }
+  else if(q.includes("formal charge")){
+    answer=
+    "<b>Formal Charge:</b><br>" +
+    "FC = Valence electrons − Non-bonding electrons − ½(Bonding electrons).";
+  }
+  else if(q.includes("quadratic")){
+    answer=
+    "<b>Quadratic equation:</b><br>" +
+    "ax² + bx + c = 0<br><br>" +
+    "Discriminant: D = b² − 4ac.";
+  }
+  else{
+    answer=
+    "Good question! 👍<br><br>" +
+    "For a full AI-powered answer, connect an AI API to this website. " +
+    "For now, try asking about Physics, Chemistry or Maths formulas.";
+  }
+
+  setTimeout(()=>{
+    chat.innerHTML +=
+      '<div class="msg ai">'+answer+'</div>';
+    chat.scrollTop=chat.scrollHeight;
+  },400);
+
+  input.value="";
+}
+
+function escapeHTML(text){
+  return text
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+}
+
 </script>
+
 </body>
 </html>
